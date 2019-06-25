@@ -21,7 +21,7 @@ function stringify(obj, {cycles = false, space = '', replacer, comparator} = {})
 
     if (Array.isArray(node)) {
       return `[${node.reduce((acc, n, i) => (
-        `${acc}${i ? ',' : ''}${indent}${space}${stringify(node, i, n, level + 1) || 'null'}`
+        acc += `${i ? ',' : ''}${indent}${space}${stringify(node, i, n, level + 1) || 'null'}`
       ), '')}${indent}]`;
     }
 
@@ -37,7 +37,7 @@ function stringify(obj, {cycles = false, space = '', replacer, comparator} = {})
       .reduce((acc, k) => {
         const v = stringify(node, k, node[k], level + 1);
         return v
-          ? `${acc}${acc ? ',' : ''}${indent}${space}${JSON.stringify(k)}${colon}${v}`
+          ? acc += `${acc ? ',' : ''}${indent}${space}${JSON.stringify(k)}${colon}${v}`
           : acc;
       }, '');
 
