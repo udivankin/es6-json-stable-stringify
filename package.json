@@ -35,7 +35,11 @@
     "stringify",
     "deterministic",
     "hash",
-    "stable"
+    "stable",
+    "json-stable-stringify",
+    "fast-stable-stringify",
+    "faster-stable-stringify",
+    "fast-json-stable-stringify"
   ],
   "author": {
     "name": "Aleksei Udivankin",

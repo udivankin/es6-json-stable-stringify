@@ -1,4 +1,4 @@
-const stringify = require('..');
+const stringify = require('../index.js');
 
 let obj, out, options;
 
