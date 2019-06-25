@@ -97,9 +97,7 @@ Or if you wanted to sort on the object values in reverse order, you could write:
 const stringify = require('es6-json-stable-stringify');
 
 const obj = { d: 6, c: 5, b: [{z:3,y:2,x:1},9], a: 10 };
-const s = stringify(obj, function (a, b) {
-    return a.value < b.value ? 1 : -1;
-});
+const s = stringify(obj, (a, b) => a.value < b.value ? 1 : -1);
 console.log(s);
 ```
 
