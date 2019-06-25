@@ -23,7 +23,7 @@ if you have to pretty print the output.
 
 ``` js
 const stringify = require('es6-json-stable-stringify');
-const obj = { c: 8, b: [{z:6,y:5,x:4},7], a: 3 };
+const obj = { c: 8, b: [{ z: 6, y: 5, x: 4 }, 7], a: 3 };
 console.log(stringify(obj));
 ```
 
@@ -58,10 +58,21 @@ const s = stringify(obj, options);
 console.log(s);
 ```
 
-which results in the output string:
+which results in prettified output string:
 
 ``` json
-{"c":8,"b":[{"z":6,"y":5,"x":4},7],"a":3}
+{
+  "a": 3,
+  "b": [
+    {
+      "x": 4,
+      "y": 5,
+      "z": 6,
+    },
+    7
+  ],
+  "c": 8
+}
 ```
 
 ### comparator
@@ -79,7 +90,7 @@ For example, to sort on the object key names in reverse order you could write:
 ``` js
 const stringify = require('es6-json-stable-stringify');
 
-const obj = { c: 8, b: [{z:6,y:5,x:4},7], a: 3 };
+const obj = { c: 8, b: [{ z: 6, y: 5, x: 4 }, 7], a: 3 };
 const options = { comparator: (a, b) => a.key < b.key ? 1 : -1 };
 const s = stringify(obj, options);
 console.log(s);
@@ -96,7 +107,7 @@ Or if you wanted to sort on the object values in reverse order, you could write:
 ``` js
 const stringify = require('es6-json-stable-stringify');
 
-const obj = { d: 6, c: 5, b: [{z:3,y:2,x:1},9], a: 10 };
+const obj = { d: 6, c: 5, b: [{ z: 3, y: 2, x: 1 }, 9], a: 10 };
 const s = stringify(obj, (a, b) => a.value < b.value ? 1 : -1);
 console.log(s);
 ```
@@ -107,9 +118,25 @@ which outputs:
 {"d":6,"c":5,"b":[{"z":3,"y":2,"x":1},9],"a":10}
 ```
 
-### replacer 
+### replacer
 
 The replacer parameter is a function `options.replacer(key, value)` that behaves the same as the replacer from the core JSON object.
+
+``` js
+const stringify = require('es6-json-stable-stringify');
+
+const obj = { a: { c: 1 }, b: 2, c: 3 };
+// Replacer which filters nodes with key equal to 'c'
+const replacer = (name, value) => name === 'c' ? undefined : value;
+const s = stringify(obj, { ...options, replacer });
+console.log(s);
+```
+
+which outputs:
+
+``` json
+{"a":{},"b":2} 
+```
 
 ### cycles
 

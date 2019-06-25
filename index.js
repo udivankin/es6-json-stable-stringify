@@ -1,7 +1,7 @@
 function stringify(obj, {cycles = false, space = '', replacer, comparator} = {}) {
   const colon = space ? ': ' : ':';
   const cmp = comparator && (f => (
-    node => (a, b) => f({key: a, value: node[a]}, {key: b, value: node[b]})
+    node => (a, b) => f({ key: a, value: node[a] }, { key: b, value: node[b] })
   ))(comparator);
   const seen = new WeakMap();
 
