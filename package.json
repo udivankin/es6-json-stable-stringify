@@ -1,20 +1,24 @@
 {
-  "name": "fast-json-stable-stringify",
-  "version": "2.0.0",
-  "description": "deterministic `JSON.stringify()` - a faster version of substack's json-stable-strigify without jsonify",
+  "name": "es6-json-stable-stringify",
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=10.14.0"
+  },
+  "description": "deterministic `JSON.stringify()` - a faster ES6 version of substack's json-stable-strigify",
   "main": "index.js",
   "types": "index.d.ts",
   "dependencies": {},
   "devDependencies": {
     "benchmark": "^2.1.4",
     "coveralls": "^3.0.0",
-    "eslint": "^4.9.0",
+    "eslint": "^6.0.1",
+    "fast-json-stable-stringify": "latest",
     "fast-stable-stringify": "latest",
     "faster-stable-stringify": "latest",
     "json-stable-stringify": "latest",
-    "nyc": "^11.2.1",
+    "nyc": "^14.1.1",
     "pre-commit": "^1.2.2",
-    "tape": "~1.0.4"
+    "tape": "~4.10.2"
   },
   "scripts": {
     "eslint": "eslint index.js test",
@@ -23,9 +27,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/epoberezkin/fast-json-stable-stringify.git"
+    "url": "git://github.com/udivankin/es6-json-stable-stringify.git"
   },
-  "homepage": "https://github.com/epoberezkin/fast-json-stable-stringify",
+  "homepage": "https://github.com/udivankin/es6-json-stable-stringify",
   "keywords": [
     "json",
     "stringify",
@@ -34,9 +38,9 @@
     "stable"
   ],
   "author": {
-    "name": "James Halliday",
-    "email": "mail@substack.net",
-    "url": "http://substack.net"
+    "name": "Aleksei Udivankin",
+    "email": "allx@mail.ru",
+    "url": "https://github.com/udivankin"
   },
   "license": "MIT",
   "nyc": {

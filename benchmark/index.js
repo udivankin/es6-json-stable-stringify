@@ -1,18 +1,15 @@
-'use strict';
-
 const Benchmark = require('benchmark');
 const suite = new Benchmark.Suite;
 const testData = require('./test.json');
 
-
 const stringifyPackages = {
   // 'JSON.stringify': JSON.stringify,
-  'fast-json-stable-stringify': require('../index'),
+  'fast-json-stable-stringify': true,
+  'es6-json-stable-stringify': require('..'),
   'json-stable-stringify': true,
   'fast-stable-stringify': true,
-  'faster-stable-stringify': true
+  'faster-stable-stringify': true,
 };
-
 
 for (const name in stringifyPackages) {
   let func = stringifyPackages[name];
@@ -28,4 +25,4 @@ suite
   .on('complete', function () {
     console.log('The fastest is ' + this.filter('fastest').map('name'));
   })
-  .run({async: true});
+  .run({ async: false });
